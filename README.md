@@ -1,4 +1,5 @@
 # YkBots and MySQL
+> npm install 
 
 ## Packages
 
