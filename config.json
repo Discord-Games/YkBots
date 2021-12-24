@@ -1,11 +1,16 @@
 {
     "client": {
         "token": ""
+        "token": "token"
     },
     "mysql": {
         "host": "",
         "user": "",
         "password": "",
         "database": ""
+        "host": "localhots",
+        "user": "user",
+        "password": "pass",
+        "database": "basededatos"
     }
 }
