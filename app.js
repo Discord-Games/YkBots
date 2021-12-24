@@ -5,13 +5,10 @@ const client = new Client();
 let con = createConnection(config.mysql);
 con.connect(err => {
     if (err) return console.log(err);
-    console.log(`MySQL has been connected!`);
 });
 // Ready event
 client.on('ready', () => {
-    console.log(`${client.user.tag} is online!`);
 });
-// Message event
 client.on('message', message => {
     if (message.author.bot || !message.guild) return;
     con.query(`SELECT * FROM settings WHERE setting = 'prefix'`, (err, row) => {
@@ -37,12 +34,10 @@ client.on('message', message => {
             case 'settings':
                 // New prfix
                 let newPrefix = args[0];
-                if (!newPrefix) return message.channel.send(`Maybe you have forget to enter a new prefix!`);
                 // Using the UPDATE query
                 con.query(`UPDATE settings SET setting = '${newPrefix}' WHERE setting = 'prefix'`, (err, row) => {
                     // Return if there is an error
                     if (err) return console.log(err);
-                    message.channel.send(`The prefix has been updated!`);
                 });
         }
     });
