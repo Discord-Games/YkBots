@@ -5,9 +5,11 @@ const client = new Client();
 let con = createConnection(config.mysql);
 con.connect(err => {
     if (err) return console.log(err);
+    console.log(`MYSQL ha conectado!`);
 });
 // Ready event
 client.on('ready', () => {
+    console.log(`${client.user.tag} esta Online!`);
 });
 client.on('message', message => {
     if (message.author.bot || !message.guild) return;
@@ -34,10 +36,12 @@ client.on('message', message => {
             case 'settings':
                 // New prfix
                 let newPrefix = args[0];
+                if (!newPrefix) return message.channel.send(`Tal vez te hayas olvidado de ingresar un nuevo prefijo!`);
                 // Using the UPDATE query
                 con.query(`UPDATE settings SET setting = '${newPrefix}' WHERE setting = 'prefix'`, (err, row) => {
                     // Return if there is an error
                     if (err) return console.log(err);
+                    message.channel.send(`El prefijo ha sido actualizado!`);
                 });
         }
     });
