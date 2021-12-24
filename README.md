@@ -1,4 +1,4 @@
-# DiscordJS and MySQL
+# YkBots and MySQL
 
 ## Packages
 
