@@ -23,7 +23,7 @@ client.on('message', message => {
         // Commands (It doesn't matter where you want to use your MySQl connection)
         switch (command) {
             case 'ping':
-                message.channel.send(`The client ping is **${client.ws.ping}ms**`);
+                message.channel.send(`El ping del cliente es **${client.ws.ping}ms**`);
                 break;
             case 'avatar':
                 let avatarEmbed = new MessageEmbed()
